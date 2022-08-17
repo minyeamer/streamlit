@@ -3,7 +3,7 @@ import pandas as pd
 
 # DB Mgmt
 import sqlite3 
-conn = sqlite3.connect("data/world.sqlite")
+conn = sqlite3.connect("data/world.sqlite", check_same_thread=False)
 cursor = conn.cursor()
 
 def sql_executor(raw_code):
@@ -11,12 +11,9 @@ def sql_executor(raw_code):
     data = cursor.fetchall()
     return data
 
-
 city = ['ID,', 'Name,', 'CountryCode,', 'District,', 'Population']
 country = ['Code,', 'Name,', 'Continent,', 'Region,', 'SurfaceArea,', 'IndepYear,', 'Population,', 'LifeExpectancy,', 'GNP,', 'GNPOld,', 'LocalName,', 'GovernmentForm,', 'HeadOfState,', 'Capital,', 'Code2']
 countrylanguage = ['CountryCode,', 'Language,', 'IsOfficial,', 'Percentage']
-
-
 
 def main():
     st.title("SQLPlayground")
@@ -53,10 +50,9 @@ def main():
                 with st.expander("Pretty Table"):
                     query_df = pd.DataFrame(query_results)
                     st.dataframe(query_df)
-                
-    
+
     elif choice == "About":
         st.subheader("About")
-        
+
 if __name__ == "__main__":
     main()
