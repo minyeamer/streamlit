@@ -1,6 +1,5 @@
 import streamlit as st
 import pandas as pd
-import webbrowser
 
 # DB Mgmt
 import sqlite3
@@ -58,10 +57,11 @@ def main():
 
     elif choice == "About":
         st.subheader("Reference")
-        if st.button("Github link"):
-            webbrowser.open_new_tab("https://github.com/minyeamer/streamlit")
-        if st.button("Original source"):
-            webbrowser.open_new_tab("https://github.com/Jcharis/Streamlit_DataScience_Apps")
+        st.markdown(
+        """
+            - Github link [here](https://github.com/minyeamer/streamlit)
+            - Also you can see original source [here](https://github.com/Jcharis/Streamlit_DataScience_Apps)
+        """)
 
 if __name__ == "__main__":
     main()
